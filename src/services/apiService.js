@@ -1,7 +1,7 @@
 import axios from "axios";
 
 // Service api
- export  const API_URL = "http://localhost:3005";
+ export  const API_URL = "https://smartphons.onrender.com";
  export const TOKEN_KEY = "smart_token";
 
 

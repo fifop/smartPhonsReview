@@ -1,0 +1,18 @@
+{
+  "files": {
+    "main.css": "/static/css/main.82b015c4.css",
+    "main.js": "/static/js/main.66f519b0.js",
+    "static/js/787.d33d60bd.chunk.js": "/static/js/787.d33d60bd.chunk.js",
+    "static/media/Home.png": "/static/media/Home.3b2f7664a42378eddedb.png",
+    "static/media/From Our CEO.png": "/static/media/From Our CEO.104d0167f646fdf3cc88.png",
+    "static/media/Home_res.png": "/static/media/Home_res.7eb79c1303e377891c05.png",
+    "index.html": "/index.html",
+    "main.82b015c4.css.map": "/static/css/main.82b015c4.css.map",
+    "main.66f519b0.js.map": "/static/js/main.66f519b0.js.map",
+    "787.d33d60bd.chunk.js.map": "/static/js/787.d33d60bd.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.82b015c4.css",
+    "static/js/main.66f519b0.js"
+  ]
+}

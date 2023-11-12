@@ -45,11 +45,11 @@ export default function AddDeviceForm() {
         <input {...register("company_id",{required:true,minLength:1})} type="number" className='form-control'/>
         {errors.company_id && <div className='text-danger'>* Enter valid number </div>}
         <label>Battery Score:</label>
-        <input {...register("battery_score",{required:true})} type="number" className='form-control'/>
-        {errors.battery_score && <div className='text-danger'>* Enter battery_score </div>}
+        <input {...register("battery_score",{required:true,max:100})} type="number" className='form-control'/>
+        {errors.battery_score && <div className='text-danger'>* Enter battery score from 1-100 </div>}
         <label>Camera Score:</label>
-        <input {...register("camera_score",{required:true})} type="number" className='form-control'/>
-        {errors.camera_score && <div className='text-danger'>* Enter Camera </div>}
+        <input {...register("camera_score",{required:true,max:100})} type="number" className='form-control'/>
+        {errors.camera_score && <div className='text-danger'>* Enter Camera score from 1-100</div>}
         <label> Price</label>
         <input {...register("price",{required:true})} type="number" className='form-control'/>
         {errors.price && <div className='text-danger'>* Enter price </div>}
