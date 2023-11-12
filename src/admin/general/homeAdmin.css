@@ -1,0 +1,17 @@
+@media (max-width: 768px) {
+    .home-background {
+      min-height: 600px; 
+      background-position: top center; 
+    }
+  }
+  
+  @media (max-width: 576px) {
+    .home-background {
+      background-image: url('../../../public/images/Home_res.png');
+      background-size:contain;
+      background-position: center center; 
+
+
+      min-height: 500px; 
+    }
+  }
