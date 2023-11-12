@@ -24,6 +24,7 @@ import UserInfo from "./pages/user/UserInfo ";
 import DevicesUserList from "./pages/user/devices/devicesUserLIst";
 import UserAddDeviceForm from "./pages/user/devices/userAddDeviceForm";
 import UserProfile from "./pages/userProfile";
+import NotFoundPage from "./components/general/notFoundPage";
 
 export default function AppRoutes() {
   return (
@@ -36,7 +37,8 @@ export default function AppRoutes() {
         <Route path="/image/:imgURL" element={<ImageCompany />} />
         <Route  path="/password-reset-request"  element={<PasswordResetRequest />}/>
         <Route path="/password-reset/:token" element={<PasswordResetForm />} />
-        <Route path="/*" element={<h2>Page 404, not found</h2>} />
+        <Route path="/404" element={<NotFoundPage />} />
+        <Route path="/*" element={ <NotFoundPage/>} />
 
         {/* Protected user routes */}
 
