@@ -73,52 +73,52 @@ export default function CompaniesAdminList() {
   return (
     <>
     <HeaderAdmin/>
-      <div className="container mt-5">
-        <h2 className="mb-4 text-center">Companies List</h2>
-        <Link className="btn btn-info mt-6 my-3" to={"/admin-addCompany"}>
-          Add Company
-        </Link>
+    <div className="container mt-5">
+      <h2 className="mb-4 text-center">Companies List</h2>
+      <Link className="btn btn-info mt-6 my-3" to={"/admin-addCompany"}>
+        Add Company
+      </Link>
+      <div className="table-responsive"> {/* עטיפת הטבלה ב-div רספונסיבי */}
         <table className="table table-bordered table-hover table-striped">
           <thead className="thead-dark">
             <tr>
               <th>#</th>
               <th>Name</th>
-              <th>image</th>
+              <th>Image</th>
               <th>Del/Edit</th>
             </tr>
           </thead>
           <tbody>
             {ar.map((item, i) => {
-              const page= query.get("page") || 1
+              const page = query.get("page") || 1;
               const encodedURL = encodeURIComponent(item.img_url);
               return (
-                <tr key={item._id}>
-                  <td>{(page-1)*10 +i+1}</td>
+                <tr className=" text-center" key={item._id}>
+                  <td>{(page-1)*10 + i + 1}</td>
                   <td>{item.name}</td>
                   <td>
                     <img
-                      onClick={() => {
-                        nav(`/image/${encodedURL}`);
-                      }}
+                      onClick={() => nav(`/image/${encodedURL}`)}
                       src={item.img_url}
-                      style={{ highet: "100px", width: "60px" }}
-                    ></img>
+                      style={{ height: "100px", width: "60px" }}
+                      alt="Company"
+                    />
                   </td>
                   <td>
-                    <button
-                      onClick={() => {
-                        deleteItem(item._id);
-                      }}
-                      className="btn btn-danger m-2"
-                    >
-                      Del
-                    </button>
-                    <Link
-                      to={`/admin-editCompany/${item._id}`}
-                      className="btn btn-success"
-                    >
-                      Edit
-                    </Link>
+                    <div className="d-flex justify-content-around"> {/* עיצוב רספונסיבי לכפתורים */}
+                      <button
+                        onClick={() => deleteItem(item._id)}
+                        className="btn btn-danger m-2"
+                      >
+                        Del
+                      </button>
+                      <Link
+                        to={`/admin-editCompany/${item._id}`}
+                        className="btn btn-success"
+                      >
+                        Edit
+                      </Link>
+                    </div>
                   </td>
                 </tr>
               );
@@ -126,9 +126,10 @@ export default function CompaniesAdminList() {
           </tbody>
         </table>
       </div>
-      <PagesBtns cssClass={"btn btn-warning ms-2"} 
-      apiUrl={API_URL+"/companies/count"} linkTo= {"/admin-companies?page="}/>
+      <PagesBtns cssClass={"btn btn-warning ms-2"} apiUrl={API_URL+"/companies/count"} linkTo={"/admin-companies?page="}/>
       <Footer/>
-    </>
+    </div>
+  </>
+  
   );
 }

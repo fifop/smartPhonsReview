@@ -6,14 +6,14 @@ const ProtectedRoute = ({ children, allowedRoles }) => {
   const { userInfo } = useSelector((state) => state.auth);
 
   if (!userInfo) {
-    // User not logged in
     return <Navigate to="/login" replace />;
-  } else if (!allowedRoles.includes(userInfo.role)) {
-    // User does not have any of the right roles
+  } else if (allowedRoles && Array.isArray(allowedRoles) && !allowedRoles.includes(userInfo?.role)) {
     return <Navigate to="/404" replace />;
   }
 
   return children;
 };
 
+
 export default ProtectedRoute;
+

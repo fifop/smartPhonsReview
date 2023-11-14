@@ -25,6 +25,7 @@ import DevicesUserList from "./pages/user/devices/devicesUserLIst";
 import UserAddDeviceForm from "./pages/user/devices/userAddDeviceForm";
 import UserProfile from "./pages/userProfile";
 import NotFoundPage from "./components/general/notFoundPage";
+import AddUserForm from "./admin/users/addUserForm";
 
 export default function AppRoutes() {
   return (
@@ -45,72 +46,65 @@ export default function AppRoutes() {
         <Route
           path="/user-profile"
           element={
-            <ProtectedRoute allowedRole="user">
-              <UserProfile />{" "}
+            <ProtectedRoute allowedRole={['admin', 'user']}>
+              <UserProfile />
             </ProtectedRoute>
           }
         />
         <Route
           path="/user-info"
           element={
-            <ProtectedRoute allowedRole="user">
-              <UserInfo />{" "}
+            <ProtectedRoute allowedRole={['admin', 'user']}>
+              <UserInfo />
             </ProtectedRoute>
           }
         />
         <Route
           path="/user-company"
           element={
-            <ProtectedRoute allowedRole="user">
-              <CompanyUserList />{" "}
+            <ProtectedRoute allowedRole={['admin', 'user']}>
+              <CompanyUserList />
             </ProtectedRoute>
           }
         />
-        <Route
-          path="/user-company"
-          element={
-            <ProtectedRoute allowedRole="user">
-              <CompanyUserList />{" "}
-            </ProtectedRoute>
-          }
-        />
+
         <Route
           path="/devices"
           element={
-            <ProtectedRoute allowedRole="user">
-              <DevicesUserList />{" "}
+            <ProtectedRoute allowedRole={['admin', 'user']}>
+              <DevicesUserList />
             </ProtectedRoute>
           }
         />
         <Route
           path="/user-AddDeviceForm"
           element={
-            <ProtectedRoute allowedRole="user">
-              <UserAddDeviceForm />{" "}
+            <ProtectedRoute allowedRole={['admin', 'user']}>
+              <UserAddDeviceForm />
             </ProtectedRoute>
           }
         />
         <Route
           path="/user-AddDeviceForm"
           element={
-            <ProtectedRoute allowedRole="user">
-              <UserAddDeviceForm />{" "}
+            <ProtectedRoute allowedRole={['admin', 'user']}>
+              <UserAddDeviceForm />
             </ProtectedRoute>
           }
         />
         <Route
           path="/user-Add-company"
           element={
-            <ProtectedRoute allowedRole="user">
-              <UserAddCompanyForm />{" "}
+            <ProtectedRoute allowedRole={['admin', 'user']}>
+              <UserAddCompanyForm />
             </ProtectedRoute>
           }
         />
         <Route
           path="/user-AddDeviceForm"
           element={
-            <ProtectedRoute allowedRole="user">
-              <UserAddDeviceForm />{" "}
+            <ProtectedRoute allowedRole={['admin', 'user']}>
+              <UserAddDeviceForm />
             </ProtectedRoute>
           }
         />
@@ -119,7 +113,7 @@ export default function AppRoutes() {
         <Route
           path="/admin/home"
           element={
-            <ProtectedRoute allowedRole="admin">
+            <ProtectedRoute allowedRole={['admin', 'user']}>
               <HomeAdmin />
             </ProtectedRoute>
           }
@@ -127,15 +121,23 @@ export default function AppRoutes() {
         <Route
           path="/users/usersList"
           element={
-            <ProtectedRoute allowedRole="admin">
+            <ProtectedRoute allowedRole={['admin', 'user']}>
               <UsersAdminList />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/users/AddUser"
+          element={
+            <ProtectedRoute allowedRole={['admin', 'user']}>
+              <AddUserForm/>
             </ProtectedRoute>
           }
         />
         <Route
           path="/changeRole/:id/:role"
           element={
-            <ProtectedRoute allowedRole="admin">
+            <ProtectedRoute allowedRole={['admin', 'user']}>
               <UsersAddAdmin />
             </ProtectedRoute>
           }
@@ -143,7 +145,7 @@ export default function AppRoutes() {
         <Route
           path="/admin-companies"
           element={
-            <ProtectedRoute allowedRole="admin">
+            <ProtectedRoute allowedRole={['admin', 'user']}>
               <CompaniesAdminList />
             </ProtectedRoute>
           }
@@ -151,7 +153,7 @@ export default function AppRoutes() {
         <Route
           path="/admin-addCompany"
           element={
-            <ProtectedRoute allowedRole="admin">
+            <ProtectedRoute allowedRole={['admin', 'user']}>
               <AddCompanyForm />
             </ProtectedRoute>
           }
@@ -159,7 +161,7 @@ export default function AppRoutes() {
         <Route
           path="/admin-editCompany/:id"
           element={
-            <ProtectedRoute allowedRole="admin">
+            <ProtectedRoute allowedRole={['admin', 'user']}>
               <CompanieEditForm />
             </ProtectedRoute>
           }
@@ -167,7 +169,7 @@ export default function AppRoutes() {
         <Route
           path="/admin-devices"
           element={
-            <ProtectedRoute allowedRole="admin">
+            <ProtectedRoute allowedRole={['admin', 'user']}>
               <DevicesAdminList />
             </ProtectedRoute>
           }
@@ -175,7 +177,7 @@ export default function AppRoutes() {
         <Route
           path="/admin-addDevice"
           element={
-            <ProtectedRoute allowedRole="admin">
+            <ProtectedRoute allowedRole={['admin', 'user']}>
               <AddDeviceForm />
             </ProtectedRoute>
           }
@@ -183,7 +185,7 @@ export default function AppRoutes() {
         <Route
           path="/admin-editDevice/:id"
           element={
-            <ProtectedRoute allowedRole="admin">
+            <ProtectedRoute allowedRole={['admin', 'user']}>
               <EditDeviceForm />
             </ProtectedRoute>
           }

@@ -72,53 +72,63 @@ const deleteItem = async (id) => {
 
 return (
   <>
- <HeaderAdmin/>
+  <HeaderAdmin/>
   <div className="container mt-5">
     <h2 className="mb-4 text-center">Devices List</h2>
     <Link className='btn btn-info mt-6 my-3' to={"/admin-addDevice"}>Add Device</Link>
-    <table className="table table-bordered table-hover table-striped">
-      <thead className="thead-dark">
-        <tr>
-        <th>#</th>
-        <th>Company ID</th>
-          <th>Name</th>
-          <th>Battery Score</th>
-          <th>Camera Score</th>
-          <th>Price</th>
-          <th>Del/Edit</th>
-        </tr>
-      </thead>
-      <tbody>
-        {ar.map((item,i)  => {
-
-          const page= query.get("page") || 1
-
-          return(
-          <tr key={item._id}>
-            <td>{ (page-1)*10 +i+1}</td>
-            <td>{item.company_id}</td>
-            <td>{item.name}</td>
-            <td>{item.battery_score}</td>
-            <td>{item.camera_score}</td>
-            <td>{item.price}</td>
-            <td>
-              <button onClick={()=>{
-                deleteItem(item._id)
-              }} className='btn btn-danger m-2'>Del</button>
-              <Link to={`/admin-editDevice/${item._id}`} 
-              className='btn btn-success'>Edit</Link>
-            </td>
+    <div className="table-responsive"> {/* עטיפת הטבלה ב-div רספונסיבי */}
+      <table className="table table-bordered table-hover table-striped">
+        <thead className="thead-dark">
+          <tr>
+            <th>#</th>
+            <th>Company ID</th>
+            <th>Name</th>
+            <th>Battery Score</th>
+            <th>Camera Score</th>
+            <th>Price</th>
+            <th>Del/Edit</th>
           </tr>
-          )
-            })}
-      </tbody>
-    </table>
+        </thead>
+        <tbody>
+          {ar.map((item, i) => {
+            const page = query.get("page") || 1;
+            return (
+              <tr className=" text-center" key={item._id}>
+                <td>{(page-1)*10 + i + 1}</td>
+                <td>{item.company_id}</td>
+                <td>{item.name}</td>
+                <td>{item.battery_score}</td>
+                <td>{item.camera_score}</td>
+                <td>{item.price}</td>
+                <td>
+                  <div className="d-flex justify-content-around"> {/* עיצוב רספונסיבי לכפתורים */}
+                    <button
+                      onClick={() => deleteItem(item._id)}
+                      className='btn btn-danger m-2'
+                    >
+                      Del
+                    </button>
+                    <Link 
+                      to={`/admin-editDevice/${item._id}`} 
+                      className='btn btn-success'
+                    >
+                      Edit
+                    </Link>
+                  </div>
+                </td>
+              </tr>
+            );
+          })}
+        </tbody>
+      </table>
+    </div>
     <div>
       <PagesBtns cssClass={"btn btn-warning ms-2"} 
-      apiUrl={API_URL+"/devices/count"} linkTo= {"/admin-devices?page="}/>
+      apiUrl={API_URL+"/devices/count"} linkTo={"/admin-devices?page="}/>
     </div>
   </div>
   <Footer/>
-  </>
+</>
+
 );
 }

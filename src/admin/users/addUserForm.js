@@ -9,7 +9,7 @@ import { toast } from 'react-toastify';
 import axios from 'axios';
 
 
-export default function SignAp() {
+export default function AddUserForm() {
   const dispatch = useDispatch()
   const { loading, userInfo, error, success } = useSelector(
     (state) => state.auth
@@ -25,10 +25,13 @@ export default function SignAp() {
   useEffect(() => {
 
     if (signupCompleted){
-      nav("/login")
+      
+          
+      nav("/users/usersList")
     
     } 
-      
+       
+    
 
   }, [nav,signupCompleted])
 
@@ -36,10 +39,35 @@ export default function SignAp() {
   const onSub = async(bodyData) => {
     console.log(bodyData)
     try {
+      
+   
+const url = `${API_URL}/users`
+const resp =await doApiMethod(url,"POST",bodyData)
 
 
-          dispatch(registerUser(bodyData))
-          setSignupCompleted(true)
+if(resp&&resp._id){
+    toast.success("המשתמש נוסף בהצלחה!", {
+        position: "top-right",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+      })
+      setSignupCompleted(true)
+}
+          else{
+            toast.error("אירעה שגיאה בהוספת המשתמש.", {
+                position: "top-right",
+                autoClose: 5000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+              });
+          }
 
       } catch (error) {
         console.error("Error add user:", error);

@@ -49,6 +49,7 @@ return (
   <div className="container mt-5">
     <h2 className="mb-4 text-center">Devices List</h2>
     <Link className='btn btn-info mt-6 my-3' to={"/user-AddDeviceForm"}>Add Device</Link>
+    <div className="table-responsive">
     <table className="table table-bordered table-hover table-striped">
       <thead className="thead-dark">
         <tr>
@@ -66,8 +67,9 @@ return (
           const page= query.get("page") || 1
 
           return(
-          <tr key={item._id}>
-            <td>{ (page-1)*10 +i+1}</td>
+            
+          <tr  className=" text-center" key={item._id}>
+            <td >{ (page-1)*10 +i+1}</td>
             <td>{item.company_id}</td>
             <td>{item.name}</td>
             <td>{item.battery_score}</td>
@@ -79,6 +81,7 @@ return (
             })}
       </tbody>
     </table>
+    </div>
     <div>
       <PagesBtns cssClass={"btn btn-warning ms-2"} 
       apiUrl={API_URL+"/devices/count"} linkTo= {"/devices?page="}/>

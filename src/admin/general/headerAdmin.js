@@ -73,7 +73,7 @@ export default function HomeAdmin() {
                   <li className="nav-item">
                     <Link
                       className="nav-link"
-                      to="/"
+                      to="/admin/home"
                       onClick={() => setIsNavCollapsed(true)}
                     >
                       Home Page

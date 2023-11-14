@@ -65,9 +65,10 @@ return (
   <div className="container mt-5">
     <h2 className="mb-4 text-center">Companies List</h2>
     <Link className='btn btn-info mt-6 my-3' to={"/user-Add-company"}>Add Company</Link>
+    <div className="table-responsive"> 
     <table className="table table-bordered table-hover table-striped">
       <thead className="thead-dark">
-        <tr>
+        <tr >
         <th>#</th>
           <th>Name</th>
           <th>image</th>
@@ -77,7 +78,7 @@ return (
         {ar.map((item,i) => {
         const encodedURL = encodeURIComponent(item.img_url);
           return(
-          <tr key={item._id}>
+          <tr className=" text-center" key={item._id}>
             <td>{i+1}</td>
             <td>{item.name}</td>
             <td><img onClick={()=>{
@@ -89,6 +90,7 @@ return (
 })}
       </tbody>
     </table>
+   </div>
   </div>
 <Footer/>
 </>

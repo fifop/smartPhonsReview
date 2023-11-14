@@ -73,64 +73,59 @@ export default function UsersAdminList() {
   };
 
   return (
-    <>
-      <HeaderAdmin />
-      <div className="container mt-5">
-        <h2 className="mb-4 text-center">Users List</h2>
-        <Link className="btn btn-info mt-6 my-3" to={'/signup'}>
-          Add User
-        </Link>
-        <table className="table table-bordered table-hover table-striped">
-          <thead className="thead-dark">
-            <tr>
-              <th>#</th>
-              <th>Name</th>
-              <th>Email</th>
-              <th>Role</th>
-              <th>Del/Edit</th>
-            </tr>
-          </thead>
-          <tbody>
-            {ar.map((item, i) => {
-
-            
-              const page= query.get("page") || 1
-
-return(
-
-
-              <tr key={item._id}>
-                <td>{(page-1)*10 +i+1}</td>
+<>
+  <HeaderAdmin />
+  <div className="container mt-5">
+    <h2 className="mb-4 text-center">Users List</h2>
+    <Link className="btn btn-info mt-6 my-3" to={'/users/AddUser'}>
+      Add User
+    </Link>
+    <div className="table-responsive"> {/* עטיפת הטבלה ב-div רספונסיבי */}
+      <table className="table table-bordered table-hover table-striped">
+        <thead className="thead-dark">
+          <tr>
+            <th>#</th>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Role</th>
+            <th>Del/Edit</th>
+          </tr>
+        </thead>
+        <tbody>
+          {ar.map((item, i) => {
+            const page = query.get("page") || 1;
+            return (
+              <tr className=" text-center" key={item._id}>
+                <td>{(page-1)*10 + i + 1}</td>
                 <td>{item.name}</td>
                 <td>{item.email}</td>
                 <td>{item.role}</td>
                 <td>
-                  <button
-                    onClick={() => {
-                      deleteItem(item._id);
-                    }}
-                    className="btn btn-danger m-2"
-                  >
-                    Del
-                  </button>
-                  <button
-                    onClick={() => {
-                      nav(`/changeRole/${item._id}/${item.role}`);
-                    }}
-                    className="btn btn-success"
-                  >
-                    Edit
-                  </button>
+                  <div className="d-flex justify-content-around"> {/* עיצוב רספונסיבי לכפתורים */}
+                    <button
+                      onClick={() => deleteItem(item._id)}
+                      className="btn btn-danger m-2"
+                    >
+                      Del
+                    </button>
+                    <button
+                      onClick={() => nav(`/changeRole/${item._id}/${item.role}`)}
+                      className="btn btn-success"
+                    >
+                      Edit
+                    </button>
+                  </div>
                 </td>
               </tr>
-)
-})}
-          </tbody>
-        </table>
-        <PagesBtns  cssClass={"btn btn-warning ms-2"} 
-      apiUrl={API_URL+"/users/count"} linkTo= {"/users/usersList?page="} />
-        <Footer/>
-      </div>
-    </>
+            );
+          })}
+        </tbody>
+      </table>
+    </div>
+    <PagesBtns cssClass={"btn btn-warning ms-2"} apiUrl={API_URL+"/users/count"} linkTo={"/users/usersList?page="} />
+    <Footer/>
+  </div>
+</>
+
   );
 }
