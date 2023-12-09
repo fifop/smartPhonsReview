@@ -2,7 +2,6 @@ import axios from 'axios'
 import { createAsyncThunk } from '@reduxjs/toolkit'
 import { API_URL } from '../../../../services/apiService'
 
-const backendURL = API_URL
 
 export const registerUser = createAsyncThunk(
     'auth/register',
@@ -14,7 +13,7 @@ export const registerUser = createAsyncThunk(
           },
         };
         const response = await axios.post(
-          `${backendURL}/users`,
+          `${API_URL}/users`,
           { name, email, password ,confirmPassword},
           config
         );
@@ -44,7 +43,7 @@ export const registerUser = createAsyncThunk(
           },
         };
         const response = await axios.post(
-          `${backendURL}/users/login`,
+          `${API_URL}/users/login`,
           { email, password },
           config
         );

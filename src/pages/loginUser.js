@@ -1,6 +1,5 @@
 
 import React, { useEffect } from 'react'
-import axios from "axios";
 import { useForm } from "react-hook-form"
 import { useNavigate, Link } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux'
